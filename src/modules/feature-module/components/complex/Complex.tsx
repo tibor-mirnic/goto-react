@@ -1,23 +1,32 @@
 import React, { createContext, FC, useContext, useEffect, useReducer } from 'react';
 
-import { FeatureModuleStateContext, FeatureModuleReducerContext } from '../../index';
+import { Context, IContextAction, IReducerContext } from 'src/common/core-ui/';
 
+import { FeatureModuleReducerContext } from '../../FeatureModule';
 import { getComplexModel } from '../../api/complex';
+import { IComplexProps } from '../../models/components/complex/props';
+import { ComplexActions } from '../../models/components/complex/actions';
+import { IComplexState } from '../../models/components/complex/state';
 import { ChildOne } from './ChildOne';
 
-export interface IComplexProps {
-  id: string;
-};
 
-export const ComplexReducerContext = createContext({
-  dispatch: null
-});
+export const ComplexReducerContext = createContext<IReducerContext<ComplexActions> | null>(null);
+export const ComplexStateContext = createContext<IComplexState | null>(null);
 
 export const Complex: FC<IComplexProps> = props => {
-  const moduleState = useContext(FeatureModuleStateContext);
   const moduleReducer = useContext(FeatureModuleReducerContext);
 
-  const [state, dispatch] = useReducer(() => {}, {});
+  const initialState: IComplexState = {
+    id: props.id,
+    name: 'Complex Component',
+    age: 20
+  };
+
+  const reducer = (state : IComplexState, action: IContextAction<ComplexActions>) => {
+    return {
+      ...state
+    };
+  }
 
   useEffect(() => {
     let didUnmount = false;
@@ -33,10 +42,10 @@ export const Complex: FC<IComplexProps> = props => {
         }
       }
       catch (error) {
-        moduleReducer?.dispatch({
-          action: 'ERROR',
-          payload: error
-        })
+        // moduleReducer?.dispatch({
+        //   action: 'ERROR',
+        //   payload: error
+        // })
       }
     };
 
@@ -49,9 +58,12 @@ export const Complex: FC<IComplexProps> = props => {
   }, [props.id]);
 
   return (
-    <ComplexReducerContext.Provider value={{dispatch}}>
-      <div>{moduleState?.apiUrl}</div>
-      <ChildOne />
-    </ComplexReducerContext.Provider>
+    <Context<IComplexState, ComplexActions>
+      reducerContext={ComplexReducerContext}
+      reducer={reducer}
+      stateContext={ComplexStateContext}
+      state={initialState}>
+        <ChildOne />
+    </Context>
   );
 };

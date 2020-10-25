@@ -1,15 +1,13 @@
 import React, { FC, useContext, useState } from 'react';
 
-import { ComplexReducerContext } from './Complex';
+import { ComplexReducerContext, ComplexStateContext } from './Complex';
 
-export interface IChildOneProps {};
-
-export const ChildOne: FC<IChildOneProps> = props => {
+export const ChildOne: FC = props => {
   const complexReducer = useContext(ComplexReducerContext);
-  const complexState: { model: { name: string }} = useContext(ComplexReducerContext);
+  const complexState = useContext(ComplexStateContext);
 
   // because setState works as in redux
-  const [name, setName] = useState(complexState.model.name);
+  const [name, setName] = useState(complexState?.name);
 
   return (
     <div>

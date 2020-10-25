@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import { FeatureModule } from 'src/modules/feature-module';
 
 /*
   import axiosAsync from 'src/common/axios-asunc';
@@ -12,7 +12,7 @@ import './App.css';
 
 function App() {
   return (
-    <div></div>
+    <FeatureModule apiUrl='/api/feature-module' />
   );
 }
 

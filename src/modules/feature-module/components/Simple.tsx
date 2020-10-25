@@ -1,6 +1,6 @@
 import React, { FC, useContext } from 'react';
 
-import { FeatureModuleStateContext } from '../index';
+import { FeatureModuleStateContext } from '../FeatureModule';
 
 export interface ISimpleProps {};
 

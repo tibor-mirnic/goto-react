@@ -1,4 +1,4 @@
-import { ErrorBase, ErrorType } from '@modules/errors';
+import { ErrorBase, ErrorType } from 'src/common/errors';
 
 export class AuthorizationError extends ErrorBase {
   constructor(message = 'Unauthorized access', name = 'Authorization') {
