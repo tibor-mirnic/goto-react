@@ -1,9 +1,8 @@
 import React, { FC, useContext, useState } from 'react';
 
-import { ComplexReducerContext, ComplexStateContext } from './Complex';
+import { ComplexStateContext } from './Complex';
 
 export const ChildTwo: FC = props => {
-  const complexReducer = useContext(ComplexReducerContext);
   const complexState = useContext(ComplexStateContext);
 
   // because setState works as in redux

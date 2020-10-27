@@ -4,9 +4,13 @@ import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { EventContext } from 'src/common/event-context';
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <EventContext>
+      <App />
+    </EventContext>
   </React.StrictMode>,
   document.getElementById('root')
 );

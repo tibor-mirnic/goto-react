@@ -1,7 +1,7 @@
-import AxiosAsync from "../axios-async";
+// import AxiosAsync from "../hooks/axios-async";
 
 export interface IHttpAsyncConfig {
   applicationId: string;
   defaultTimeout: number;
-  accessTokenFactory: (axiosAsync: AxiosAsync) => Promise<string>;
+  // accessTokenFactory: (axiosAsync: AxiosAsync) => Promise<string>;
 }

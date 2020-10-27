@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, MouseEvent } from 'react';
 
 import { FeatureModule } from 'src/modules/feature-module';
 
@@ -10,9 +10,21 @@ import { FeatureModule } from 'src/modules/feature-module';
   })
 */
 
-function App() {
+const App = () => {
+
+  const [isFeatureModuleVisible, setIsFeatureModuleVisible] = useState(false);
+
+  const handleClick = (event: MouseEvent) => {
+    event.preventDefault();
+    setIsFeatureModuleVisible(!isFeatureModuleVisible);
+  }
+
   return (
-    <FeatureModule apiUrl='/api/feature-module' />
+    <div>
+      <button onClick={handleClick}>Show/Hide FeatureModule</button>
+      <br />
+      { isFeatureModuleVisible && <FeatureModule apiUrl='/api/feature-module' /> }
+    </div>
   );
 }
 

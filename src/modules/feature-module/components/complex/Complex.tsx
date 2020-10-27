@@ -1,20 +1,13 @@
-import React, { createContext, FC, useContext, useEffect, useReducer } from 'react';
+import React, { FC, createContext, useState, useEffect } from 'react';
 
-import { Context, IContextAction, IReducerContext } from 'src/common/core-ui/';
-
-import { FeatureModuleReducerContext } from '../../FeatureModule';
 import { getComplexModel } from '../../api/complex';
 import { IComplexProps } from '../../models/components/complex/props';
-import { ComplexActions } from '../../models/components/complex/actions';
 import { IComplexState } from '../../models/components/complex/state';
 import { ChildOne } from './ChildOne';
 
-
-export const ComplexReducerContext = createContext<IReducerContext<ComplexActions> | null>(null);
 export const ComplexStateContext = createContext<IComplexState | null>(null);
 
 export const Complex: FC<IComplexProps> = props => {
-  const moduleReducer = useContext(FeatureModuleReducerContext);
 
   const initialState: IComplexState = {
     id: props.id,
@@ -22,11 +15,7 @@ export const Complex: FC<IComplexProps> = props => {
     age: 20
   };
 
-  const reducer = (state : IComplexState, action: IContextAction<ComplexActions>) => {
-    return {
-      ...state
-    };
-  }
+  const [state, setState] = useState(initialState);
 
   useEffect(() => {
     let didUnmount = false;
@@ -58,12 +47,8 @@ export const Complex: FC<IComplexProps> = props => {
   }, [props.id]);
 
   return (
-    <Context<IComplexState, ComplexActions>
-      reducerContext={ComplexReducerContext}
-      reducer={reducer}
-      stateContext={ComplexStateContext}
-      state={initialState}>
-        <ChildOne />
-    </Context>
+    <ComplexStateContext.Provider value={state}>
+      <ChildOne />
+    </ComplexStateContext.Provider>
   );
 };
