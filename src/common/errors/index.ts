@@ -1,3 +1,5 @@
+export * from './hooks/error';
+
 export * from './models/enum/error-type';
 export * from './models/base';
 export * from './models/application';
