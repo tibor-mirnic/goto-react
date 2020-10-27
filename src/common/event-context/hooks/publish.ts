@@ -1,11 +1,10 @@
-import { useContext } from "react";
+import { useMemo } from "react";
 
-import { EventEmitterContext } from "../event-emitter-context";
-
+import { eventEmitterInstance } from "../event-emitter-instance";
 import { Publish } from "../models/event-emitter";
 
 export const usePublish = (): Publish => {
-  const context = useContext(EventEmitterContext);
+  const instance = useMemo(() => eventEmitterInstance, []);
 
-  return context.publish.bind(context);
+  return instance.publish.bind(instance);
 };

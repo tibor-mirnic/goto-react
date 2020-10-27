@@ -1,14 +1,14 @@
-import { useContext, useEffect } from "react";
+import { useEffect, useMemo } from "react";
 
-import { EventEmitterContext } from "../event-emitter-context";
+import { eventEmitterInstance } from "../event-emitter-instance";
 import { Handler } from "../models/handler";
 
 export const useEvent = <T>(eventName: string, handler: Handler<T>) => {
-  const context = useContext(EventEmitterContext);
+  const instance = useMemo(() => eventEmitterInstance, []);
 
   useEffect(() => {
-    context.subscribe(eventName, handler);
+    instance.subscribe(eventName, handler);
 
-    return () => context.unsubscribe(eventName, handler)
+    return () => instance.unsubscribe(eventName, handler)
   }, [eventName, handler]);
 };

@@ -1,6 +1,5 @@
 import React, { useState, MouseEvent } from 'react';
 
-import { EventContext } from 'src/common/event-context';
 import { createAxios , useAxios } from 'src/common/axios';
 
 import { FeatureModule } from 'src/modules/feature-module';
@@ -43,11 +42,11 @@ const App = () => {
   }
 
   return (
-    <EventContext>
+    <div>
       <button onClick={handleClick}>Show/Hide FeatureModule</button>
       <br />
       { isFeatureModuleVisible && <FeatureModule apiUrl='/api/feature-module' /> }
-    </EventContext>
+    </div>
   );
 }
 
