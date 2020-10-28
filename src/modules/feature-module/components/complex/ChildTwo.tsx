@@ -1,26 +1,22 @@
-import React, { FC, useContext, useState } from 'react';
+import React, { FC } from 'react';
 
-import { ComplexStateContext } from './Complex';
+import { IChildTwoProps } from '../../models/components/complex/props';
 
-export const ChildTwo: FC = props => {
-  const complexState = useContext(ComplexStateContext);
-
-  // because setState works as in redux
-  const [age, setAge] = useState(complexState?.age);
-
+export const ChildTwo: FC<IChildTwoProps> = props => {
   return (
-    <div>
+    <label>
+      Age:&nbsp;
       <input type="text"
-        value={age}
-        onChange={(evt) => {
-          setAge((prev) => {
-            if (prev) {
-              console.log('prev')
-            }
+        value={props.age}
+        onChange={evt => {
+          let newAge = Number.parseInt(evt.target.value, 10);
 
-            return Number.parseInt(evt.target.value, 10);
-          });
+          if (Number.isNaN(newAge)) {
+            newAge = 0;
+          }
+          
+          props.onAgeChange(newAge);
         }} />
-    </div>
+    </label>
   );
 };

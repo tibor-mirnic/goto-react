@@ -3,9 +3,9 @@ import { useMemo } from "react";
 import { eventEmitterInstance } from "../event-emitter-instance";
 import { IEventEmitter } from "../models/event-emitter";
 
-type PuhlishHook = Pick<IEventEmitter, "publish">;
+type PublishHook = Pick<IEventEmitter, "publish">;
 
-export const usePublish = (): PuhlishHook => {
+export const usePublish = (): PublishHook => {
   const instance = useMemo(() => eventEmitterInstance, []);
 
   return {

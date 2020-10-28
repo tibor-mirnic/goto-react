@@ -1,26 +1,16 @@
-import React, { FC, useContext, useState } from 'react';
+import React, { FC } from 'react';
 
-import { ComplexStateContext } from './Complex';
+import { IChildOneProps } from '../../models/components/complex/props';
 
-export const ChildOne: FC = props => {
-  const complexState = useContext(ComplexStateContext);
-
-  // because setState works as in redux
-  const [name, setName] = useState(complexState?.name);
-
+export const ChildOne: FC<IChildOneProps> = props => {
   return (
-    <div>
+    <label>
+      Name:&nbsp;
       <input type="text"
-        value={name}
-        onChange={(evt) => {
-          setName((prev) => {
-            if (prev) {
-              console.log('prev')
-            }
-
-            return evt.target.value;
-          });
+        value={props.name}
+        onChange={evt => {
+          props.onNameChange(evt.target.value);
         }} />
-    </div>
+    </label>
   );
 };
