@@ -1,6 +1,10 @@
-import React, { FC, createContext, useState, useEffect } from 'react';
+import React, { FC, createContext, useState, useEffect, useContext } from 'react';
 
-import { getComplexModel } from '../../api/complex';
+import { useWithCancelation } from 'src/common/axios';
+
+import { FeatureModuleStateContext } from '../../FeatureModule';
+
+import { useComplexApi } from '../../hooks/complex.api';
 import { IComplexProps } from '../../models/components/complex/props';
 import { IComplexState } from '../../models/components/complex/state';
 import { ChildOne } from './ChildOne';
@@ -16,18 +20,18 @@ export const Complex: FC<IComplexProps> = props => {
   };
 
   const [state, setState] = useState(initialState);
-
-  useEffect(() => {
-    let didUnmount = false;
-
-    const getUser = async (): Promise<void> => {
+  const moduleState = useContext(FeatureModuleStateContext);
+  const { getComplexModel } = useComplexApi(moduleState.apiUrl);
+  
+  useWithCancelation((mounted, cancelationToken) => {
+    const getModel = async (mounted: boolean): Promise<void> => {
       try {
         const response = await getComplexModel({
           id: props.id
-        });
+        }, cancelationToken);
         
-        if (!didUnmount) {
-        // setModel(response.model);
+        if (mounted) {
+          console.log(response);
         }
       }
       catch (error) {
@@ -38,12 +42,7 @@ export const Complex: FC<IComplexProps> = props => {
       }
     };
 
-    getUser();
-
-    return () => {
-      didUnmount = true;
-    }
-
+    getModel(mounted);
   }, [props.id]);
 
   return (

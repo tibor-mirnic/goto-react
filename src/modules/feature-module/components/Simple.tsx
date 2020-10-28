@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useContext } from 'react';
 
-import { usePublish } from 'src/common/event-context';
+import { usePublish } from 'src/common/events';
 
 import { FeatureModuleStateContext } from '../FeatureModule';
 
@@ -8,7 +8,7 @@ export interface ISimpleProps {};
 
 export const Simple: FC<ISimpleProps> = props => {
   const moduleState = useContext(FeatureModuleStateContext);
-  const publish = usePublish();
+  const { publish } = usePublish();
 
   const handleClick = useCallback(() => {
     publish<any>('simple-onClick', {

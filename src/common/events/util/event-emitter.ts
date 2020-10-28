@@ -35,5 +35,7 @@ export class EventEmitter implements IEventEmitter {
     let handlers = this._events.get(eventName) || [];
     
     handlers = handlers.filter(a => a != handler);
+
+    this._events.set(eventName, handlers);
   }
 }

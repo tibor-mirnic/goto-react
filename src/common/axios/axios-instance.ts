@@ -1,17 +1,21 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 
 import { addAuthorizationInterceptor } from "./interceptors/authorization";
 import { addErrorInterceptor } from "./interceptors/error";
 import { addHeadersInterceptor } from "./interceptors/headers";
 import { IAxiosConfig } from "./models/axios-config";
+import { Axios } from "./util/axios";
 
-let _axiosInstance: AxiosInstance;
+let _axios : Axios;
 
-export const getAxiosInstance = (): AxiosInstance => {
-  return _axiosInstance;
+export const getAxiosInstance = (): Axios => {
+  return _axios;
 };
 
-export const createAxios = (axiosConfig: IAxiosConfig, applyConfig?: (config: AxiosRequestConfig) => void) => {
+export const createAxios = (
+  axiosConfig: IAxiosConfig,
+  applyConfig?: (config: AxiosRequestConfig
+) => void) => {
   const config: AxiosRequestConfig = {
     timeout: 5 * 1000 // 5 seconds
   }
@@ -20,9 +24,11 @@ export const createAxios = (axiosConfig: IAxiosConfig, applyConfig?: (config: Ax
     applyConfig(config);
   }
 
-  _axiosInstance = axios.create(config);
+  const axiosInstance = axios.create(config);
 
-  addErrorInterceptor(_axiosInstance);
-  addAuthorizationInterceptor(_axiosInstance, axiosConfig.accessTokenFactory);
-  addHeadersInterceptor(_axiosInstance, axiosConfig.applicationId);
+  addErrorInterceptor(axiosInstance);
+  addAuthorizationInterceptor(axiosInstance, axiosConfig.accessTokenFactory);
+  addHeadersInterceptor(axiosInstance, axiosConfig.applicationId);
+
+  _axios = new Axios(axiosInstance);
 };

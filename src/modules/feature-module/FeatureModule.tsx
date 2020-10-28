@@ -1,13 +1,13 @@
 import React, { FC, createContext, useState } from 'react';
 
-import { useEvent, Events } from 'src/common/event-context';
+import { useEvent, Events } from 'src/common/events';
 
 import { IFeatureModuleProps } from './models/components/feature-module/props';
 import { IFeatureModuleState } from './models/components/feature-module/state';
 import { Simple } from './components/Simple';
 import { Complex } from './components/complex/Complex';
 
-export const FeatureModuleStateContext = createContext<IFeatureModuleState | null>(null);
+export const FeatureModuleStateContext = createContext<IFeatureModuleState>({} as any);
 
 export const FeatureModule: FC<IFeatureModuleProps> = props => {
 
@@ -30,7 +30,7 @@ export const FeatureModule: FC<IFeatureModuleProps> = props => {
   return (
     <FeatureModuleStateContext.Provider value={state}>
       <Simple />
-      <Complex id="complex-id"/>
+      <Complex id="1"/>
     </FeatureModuleStateContext.Provider>
   );
 }

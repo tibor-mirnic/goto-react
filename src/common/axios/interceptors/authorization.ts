@@ -1,10 +1,12 @@
 import { AxiosInstance, AxiosResponse } from "axios";
 
 import { ErrorBase } from "src/common/errors";
+import { getAxiosInstance } from "../axios-instance";
 import { AuthenticationError, ConnectionError } from "../models/errors/auth";
 import { AUTHORIZATION, SKIP_AUTHORIZATION } from "../models/http-headers";
+import { Axios } from "../util/axios";
 
-export const addAuthorizationInterceptor = (axios: AxiosInstance, accessTokenFactory: () => Promise<string>) => {
+export const addAuthorizationInterceptor = (axios: AxiosInstance, accessTokenFactory: (axios: Axios) => Promise<string>) => {
   axios.interceptors.request.use(
     async request => {
       try {
@@ -24,7 +26,8 @@ export const addAuthorizationInterceptor = (axios: AxiosInstance, accessTokenFac
           return request;
         }
         
-        const token = await accessTokenFactory();
+        const axiosInstance = getAxiosInstance();
+        const token = await accessTokenFactory(axiosInstance);
 
         request.headers[AUTHORIZATION] = `Bearer ${token}`;
 

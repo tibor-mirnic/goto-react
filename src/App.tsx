@@ -1,43 +1,31 @@
 import React, { useState, MouseEvent } from 'react';
 
-import { createAxios , useAxios } from 'src/common/axios';
+import { createAxios } from 'src/common/axios';
 
 import { FeatureModule } from 'src/modules/feature-module';
-import { userErrorHandler } from 'src/common/errors';
-
-const accessTokenFactory = async (): Promise<string> => {
-  try {
-    // const token = await Promise.resolve('goto-react');
-    // return token;
-    throw new Error();
-  }
-  catch (error) {
-    throw error;
-  }
-}
 
 createAxios({
   applicationId: 'goto-react',
-  accessTokenFactory
+  accessTokenFactory: async axios => {
+    try {
+      const response = await axios.get({
+        resourcePath: '/users',
+        skipAuthorization: true
+      });
+
+      return 'goto-react';
+    }
+    catch (error) {
+      throw error;
+    }
+  }
 });
 
 const App = () => {
+  const apiUrl = process.env.REACT_APP_API_URL as string;
   const [isFeatureModuleVisible, setIsFeatureModuleVisible] = useState(false);
-  const { get } = useAxios();
 
   const handleClick = (event: MouseEvent) => {
-    
-    get({
-      resourcePath: 'vectors/initial'
-    })
-    .then(response => {
-      console.log(response);
-    })
-    .catch(error => {
-      const errorEvent = userErrorHandler(error);
-      console.log(errorEvent);
-    });
-
     setIsFeatureModuleVisible(!isFeatureModuleVisible);
   }
 
@@ -45,7 +33,7 @@ const App = () => {
     <div>
       <button onClick={handleClick}>Show/Hide FeatureModule</button>
       <br />
-      { isFeatureModuleVisible && <FeatureModule apiUrl='/api/feature-module' /> }
+      { isFeatureModuleVisible && <FeatureModule apiUrl={apiUrl} /> }
     </div>
   );
 }
