@@ -1,0 +1,7 @@
+{
+  "{modules,src}/**/*.{ts,tsx,js,jsx}": [
+    "organize-imports-cli",
+    "nx affected:lint --fix --files",
+    "nx format:write --files"
+  ]
+}
