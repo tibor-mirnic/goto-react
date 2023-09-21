@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@domain/feature-one": ["modules/domain/feature-one/src/index.ts"],
+      "@domain/feature-two": ["modules/domain/feature-two/src/index.ts"],
       "@infrastructure/common": ["modules/infrastructure/common/src/index.ts"]
     }
   },
