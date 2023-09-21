@@ -17,6 +17,10 @@
                 "onlyDependOnLibsWithTags": ["*"]
               },
               {
+                "sourceTag": "domain:*",
+                "onlyDependOnLibsWithTags": ["infrastructure:*", "domain:shared"]
+              },
+              {
                 "sourceTag": "infrastructure:common",
                 "onlyDependOnLibsWithTags": ["infrastructure:common"]
               }
