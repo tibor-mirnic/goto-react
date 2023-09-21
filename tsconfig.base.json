@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@domain/feature-one": ["modules/domain/feature-one/src/index.ts"],
       "@infrastructure/common": ["modules/infrastructure/common/src/index.ts"]
     }
   },
