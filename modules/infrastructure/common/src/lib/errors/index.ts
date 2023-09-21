@@ -1,2 +1,2 @@
 export * from './models';
-export { useErrorHandler } from './hooks';
+export { useErrorHandler as useErrorHandlerPrivate } from './hooks';

@@ -18,7 +18,8 @@
       "@domain/feature-one": ["modules/domain/feature-one/src/index.ts"],
       "@domain/feature-two": ["modules/domain/feature-two/src/index.ts"],
       "@domain/shared": ["modules/domain/shared/src/index.ts"],
-      "@infrastructure/common": ["modules/infrastructure/common/src/index.ts"]
+      "@infrastructure/common": ["modules/infrastructure/common/src/index.ts"],
+      "@infrastructure/common-moq": ["modules/infrastructure/common/src/index.moq.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
