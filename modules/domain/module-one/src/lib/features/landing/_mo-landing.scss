@@ -1,0 +1,9 @@
+@mixin mo-landing($theme, $cui-variables, $color-palette) {
+  $-background: gray;
+  $-padding: 2rem;
+
+  .mo-landing {
+    background-color: $-background;
+    padding: $-padding;
+  }
+}

@@ -8,6 +8,6 @@ export type ApplicationModule = {
 export type ApplicationModulesDictionary = Map<string, ApplicationModule>;
 
 export enum ApplicationModules {
-  FEATURE_ONE = 'feature-two',
-  FEATURE_TWO = 'feature-one'
+  MODULE_ONE = 'module-two',
+  MODULE_TWO = 'module-one'
 }

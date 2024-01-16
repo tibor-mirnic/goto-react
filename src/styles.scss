@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+@use '../modules/domain/module-one/src/lib' as moModule;
+
+$theme: 1;
+$cui-variables: 2;
+$color-palette: 3;
+
+#root {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+@include moModule.load($theme, $cui-variables, $color-palette);

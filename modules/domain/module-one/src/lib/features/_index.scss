@@ -1,0 +1,7 @@
+@use './feature-one/mo-feature-one' as *;
+@use './landing/mo-landing' as *;
+
+@mixin load($theme, $cui-variables, $color-palette) {
+  @include mo-feature-one($theme, $cui-variables, $color-palette);
+  @include mo-landing($theme, $cui-variables, $color-palette);
+}

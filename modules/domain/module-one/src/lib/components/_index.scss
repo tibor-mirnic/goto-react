@@ -1,0 +1,5 @@
+@use './reusable/mo-reusable' as *;
+
+@mixin load($theme, $cui-variables, $color-palette) {
+  @include mo-reusable($theme, $cui-variables, $color-palette);
+}

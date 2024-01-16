@@ -1,0 +1,7 @@
+@use './feature-one/mo-feature-one-page' as *;
+@use './landing/mo-landing-page' as *;
+
+@mixin load($theme, $cui-variables, $color-palette) {
+  @include mo-feature-one-page($theme, $cui-variables, $color-palette);
+  @include mo-landing-page($theme, $cui-variables, $color-palette);
+}

@@ -1,0 +1,9 @@
+@use './components' as cmpModule;
+@use './features' as ftModule;
+@use './pages/' as pModule;
+
+@mixin load($theme, $cui-variables, $color-palette) {
+  @include cmpModule.load($theme, $cui-variables, $color-palette);
+  @include ftModule.load($theme, $cui-variables, $color-palette);
+  @include pModule.load($theme, $cui-variables, $color-palette);
+}

@@ -10,16 +10,16 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const modules: ApplicationModule[] = [
   {
-    id: ApplicationModules.FEATURE_ONE,
-    displayName: 'Feature One',
-    svgIcon: 'feature-one',
-    routePath: 'feature-one'
+    id: ApplicationModules.MODULE_ONE,
+    displayName: 'Module One',
+    svgIcon: 'module-one',
+    routePath: 'module-one'
   },
   {
-    id: ApplicationModules.FEATURE_TWO,
-    displayName: 'Feature Two',
-    svgIcon: 'feature-two',
-    routePath: 'feature-two'
+    id: ApplicationModules.MODULE_TWO,
+    displayName: 'Module Two',
+    svgIcon: 'module-two',
+    routePath: 'module-two'
   }
 ];
 
@@ -68,11 +68,11 @@ export const getNavigationContextProviderFactory: NavigationContextProviderFacto
     );
 
     const navigateToFeatureOne = useCallback(() => {
-      navigateToModule(ApplicationModules.FEATURE_ONE);
+      navigateToModule(ApplicationModules.MODULE_ONE);
     }, [navigateToModule]);
 
     const navigateToFeatureTwo = useCallback(() => {
-      navigateToModule(ApplicationModules.FEATURE_TWO);
+      navigateToModule(ApplicationModules.MODULE_TWO);
     }, [navigateToModule]);
 
     const value = useMemo<NavigationContext>(

@@ -1,0 +1,11 @@
+@mixin mo-feature-one($theme, $cui-variables, $color-palette) {
+  // LAYOUT
+  $-padding: 2rem;
+
+  // COLORS
+  $-background: lime;
+  .mo-feature-one {
+    background-color: $-background;
+    padding: $-padding;
+  }
+}

@@ -1,0 +1,7 @@
+@mixin mo-feature-one-page($theme, $cui-variables, $color-palette) {
+  $-background: yellow;
+
+  .mo-feature-one-page {
+    background-color: $-background;
+  }
+}

@@ -1,0 +1,12 @@
+@mixin mo-reusable($theme, $cui-variables, $color-palette) {
+  // LAYOUT
+  $-padding: 2rem;
+
+  // COLORS
+  $-background: lightgray;
+
+  .mo-reusable {
+    background-color: $-background;
+    padding: $-padding;
+  }
+}
