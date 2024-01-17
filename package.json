@@ -4,8 +4,9 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve",
-    "build": "nx build",
-    "test": "nx test",
+    "lint": "nx run-many -t lint",
+    "test": "nx run-many -t test -- --passWithNoTests",
+    "test:ci": "nx run-many -t test -- --runInBand --passWithNoTests",
     "prepare": "husky install"
   },
   "private": true,

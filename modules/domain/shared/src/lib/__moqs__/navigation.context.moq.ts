@@ -26,17 +26,17 @@ export const getNavigationContextMock = (mockedContext?: NavigationContextMock):
       ...moduleOne
     },
     getModule: () => moduleOne,
-    navigateToFeatureOne: () => {},
-    navigateToFeatureTwo: () => {},
+    navigateToModuleOne: () => {},
+    navigateToModuleTwo: () => {},
     navigateToModule: () => {}
   };
 
-  if (mockedContext?.navigateToFeatureOne) {
-    mock.navigateToFeatureOne = mockedContext.navigateToFeatureOne;
+  if (mockedContext?.navigateToModuleOne) {
+    mock.navigateToModuleOne = mockedContext.navigateToModuleOne;
   }
 
-  if (mockedContext?.navigateToFeatureTwo) {
-    mock.navigateToFeatureTwo = mockedContext.navigateToFeatureTwo;
+  if (mockedContext?.navigateToModuleTwo) {
+    mock.navigateToModuleTwo = mockedContext.navigateToModuleTwo;
   }
 
   if (mockedContext?.navigateToModule) {

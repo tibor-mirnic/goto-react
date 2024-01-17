@@ -46,11 +46,12 @@ describe('component:LtLayout', () => {
   it('should change current module', async () => {
     render(<LtLayout />);
 
-    const modulesDropdown = screen.getByRole('combobox');
-    await userEvent.click(modulesDropdown);
-
-    const dropdownOptions = screen.getAllByRole('option');
-    await userEvent.click(dropdownOptions[1]);
+    await userEvent.selectOptions(
+      screen.getByRole('combobox'),
+      screen.getAllByRole('option', {
+        name: 'Test Module Two'
+      })
+    );
 
     expect(navigateToModule).toHaveBeenCalledTimes(1);
     expect(navigateToModule).toHaveBeenCalledWith('test-module-two');

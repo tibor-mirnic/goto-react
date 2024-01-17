@@ -1,22 +1,18 @@
-/// <reference types="vitest" />
+/// <reference types='vitest' />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import dts from 'vite-plugin-dts';
 import * as path from 'path';
+import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 
 export default defineConfig({
   root: __dirname,
-  cacheDir: '../../../node_modules/.vite/domain-module-two',
+  cacheDir: '../../../node_modules/.vite/modules/domain/module-two',
 
   plugins: [
-    dts({
-      entryRoot: 'src',
-      tsConfigFilePath: path.join(__dirname, 'tsconfig.lib.json'),
-      skipDiagnostics: true
-    }),
     react(),
-    nxViteTsPaths()
+    nxViteTsPaths(),
+    dts({ entryRoot: 'src', tsConfigFilePath: path.join(__dirname, 'tsconfig.lib.json'), skipDiagnostics: true })
   ],
 
   // Uncomment this if you are using workers.
@@ -29,7 +25,9 @@ export default defineConfig({
   build: {
     outDir: '../../../dist/modules/domain/module-two',
     reportCompressedSize: true,
-    commonjsOptions: { transformMixedEsModules: true },
+    commonjsOptions: {
+      transformMixedEsModules: true
+    },
     lib: {
       // Could also be a dictionary or array of multiple entry points.
       entry: 'src/index.ts',
@@ -46,16 +44,18 @@ export default defineConfig({
   },
 
   test: {
-    reporters: ['default'],
-    coverage: {
-      reportsDirectory: '../../../coverage/modules/domain/module-two',
-      provider: 'v8'
-    },
     globals: true,
     cache: {
       dir: '../../../node_modules/.vitest'
     },
     environment: 'jsdom',
-    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}']
+    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    setupFiles: './src/test-setup.ts',
+
+    reporters: ['default'],
+    coverage: {
+      reportsDirectory: '../../../coverage/modules/domain/module-two',
+      provider: 'v8'
+    }
   }
 });

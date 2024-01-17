@@ -67,11 +67,11 @@ export const getNavigationContextProviderFactory: NavigationContextProviderFacto
       [getModule, navigate]
     );
 
-    const navigateToFeatureOne = useCallback(() => {
+    const navigateToModuleOne = useCallback(() => {
       navigateToModule(ApplicationModules.MODULE_ONE);
     }, [navigateToModule]);
 
-    const navigateToFeatureTwo = useCallback(() => {
+    const navigateToModuleTwo = useCallback(() => {
       navigateToModule(ApplicationModules.MODULE_TWO);
     }, [navigateToModule]);
 
@@ -81,10 +81,10 @@ export const getNavigationContextProviderFactory: NavigationContextProviderFacto
         currentModule,
         getModule,
         navigateToModule,
-        navigateToFeatureOne,
-        navigateToFeatureTwo
+        navigateToModuleOne,
+        navigateToModuleTwo
       }),
-      [currentModule, getModule, navigateToFeatureTwo, navigateToFeatureOne, navigateToModule]
+      [currentModule, getModule, navigateToModuleTwo, navigateToModuleOne, navigateToModule]
     );
 
     return <navigationContext.Provider value={value}>{children}</navigationContext.Provider>;

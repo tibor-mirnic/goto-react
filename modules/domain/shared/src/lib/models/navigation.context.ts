@@ -7,8 +7,8 @@ export type NavigationContext = {
   currentModule: ApplicationModule;
   getModule: (moduleId: string) => ApplicationModule;
   navigateToModule: (moduleId: string) => void;
-  navigateToFeatureOne: () => void;
-  navigateToFeatureTwo: () => void;
+  navigateToModuleOne: () => void;
+  navigateToModuleTwo: () => void;
 };
 
 export type NavigationContextProvider = FC<PropsWithChildren>;

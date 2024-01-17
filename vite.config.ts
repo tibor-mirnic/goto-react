@@ -1,18 +1,11 @@
-/// <reference types="vitest" />
+/// <reference types='vitest' />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 
 export default defineConfig({
   root: __dirname,
-  build: {
-    outDir: 'dist/goto-react',
-    reportCompressedSize: true,
-    commonjsOptions: {
-      transformMixedEsModules: true
-    }
-  },
-  cacheDir: './node_modules/.vite/goto-react',
+  cacheDir: './node_modules/.vite/.',
 
   server: {
     port: 4200,
@@ -31,17 +24,27 @@ export default defineConfig({
   //  plugins: [ nxViteTsPaths() ],
   // },
 
+  build: {
+    outDir: './dist/goto-react',
+    reportCompressedSize: true,
+    commonjsOptions: {
+      transformMixedEsModules: true
+    }
+  },
+
   test: {
-    reporters: ['default'],
-    coverage: {
-      reportsDirectory: 'coverage/goto-react',
-      provider: 'v8'
-    },
     globals: true,
     cache: {
       dir: './node_modules/.vitest'
     },
     environment: 'jsdom',
-    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}']
+    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    setupFiles: './src/test-setup.ts',
+
+    reporters: ['default'],
+    coverage: {
+      reportsDirectory: './coverage/goto-react',
+      provider: 'v8'
+    }
   }
 });
