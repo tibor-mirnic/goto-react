@@ -2,6 +2,7 @@
 
 @use '../modules/integrations/layout/src/lib/' as ltModule;
 @use '../modules/domain/module-one/src/lib' as moModule;
+@use '../modules/domain/security/src/lib' as scModule;
 
 /* TODO: Define proper variables */
 $theme: 1;
@@ -42,3 +43,4 @@ $color-palette: 3;
 @include base-overrides($cui-variables);
 @include ltModule.load($theme, $cui-variables, $color-palette);
 @include moModule.load($theme, $cui-variables, $color-palette);
+@include scModule.load($theme, $cui-variables, $color-palette);

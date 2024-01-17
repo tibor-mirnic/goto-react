@@ -1,0 +1,15 @@
+@mixin sc-un-authenticated-page($theme, $cui-variables, $color-palette) {
+  $-background: darkred;
+  $-padding: 2rem;
+
+  .sc-un-authenticated-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: $-background;
+    padding: $-padding;
+    color: white;
+    font-size: 2rem;
+  }
+}

@@ -17,6 +17,7 @@
     "paths": {
       "@domain/module-one": ["modules/domain/module-one/src/index.ts"],
       "@domain/module-two": ["modules/domain/module-two/src/index.ts"],
+      "@domain/security": ["modules/domain/security/src/index.ts"],
       "@domain/shared": ["modules/domain/shared/src/index.ts"],
       "@domain/shared-moq": ["modules/domain/shared/src/index.moq.ts"],
       "@infrastructure/common": ["modules/infrastructure/common/src/index.ts"],

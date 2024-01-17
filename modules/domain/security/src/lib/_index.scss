@@ -1,0 +1,5 @@
+@use './pages/' as pgsModule;
+
+@mixin load($theme, $cui-variables, $color-palette) {
+  @include pgsModule.load($theme, $cui-variables, $color-palette);
+}

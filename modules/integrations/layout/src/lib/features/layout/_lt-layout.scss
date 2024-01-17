@@ -2,17 +2,20 @@
 
 @mixin lt-layout($theme, $cui-variables, $color-palette) {
   $-background: lightgray;
-  $-padding: 3rem;
+  $-padding: 1rem;
 
   .lt-layout {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    padding: $-padding;
 
     &-header {
       display: flex;
       flex-direction: row;
       gap: 1rem;
-      height: 6rem;
+      height: 4rem;
+      align-items: center;
 
       &-spacer {
         flex: 1;
@@ -27,6 +30,7 @@
     &-footer {
       display: flex;
       align-items: center;
+      justify-content: center;
       height: 4rem;
     }
   }

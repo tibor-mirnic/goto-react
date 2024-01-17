@@ -1,5 +1,6 @@
 import { ModuleOneModule } from '@domain/module-one';
-import { ApplicationModules, useNavigationContextSelector } from '@domain/shared';
+import { useAuthorize /* ScUnAuthenticatedPage */ } from '@domain/security';
+import { ApplicationModules, useNavigationContextSelector, useSecurityContextSelector } from '@domain/shared';
 import { LtLayout } from '@integrations/layout';
 import { FC, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
@@ -8,9 +9,18 @@ const getModuleRoute = (routePath: string) => `${routePath}/*`;
 
 export const App: FC = () => {
   const getModule = useNavigationContextSelector((a) => a.getModule);
-
+  const isAuthenticated = useSecurityContextSelector((a) => a.isAuthenticated);
   const featureOneModule = getModule(ApplicationModules.MODULE_ONE);
   const featureTwoModule = getModule(ApplicationModules.MODULE_TWO);
+
+  useAuthorize(); // Start the authorization process
+
+  // if (!isAuthenticated) {
+  //   return <ScUnAuthenticatedPage />;
+  // }
+
+  console.log(`Authenticated: ${isAuthenticated}`);
+
   return (
     <Routes>
       <Route path="/" element={<LtLayout />}>

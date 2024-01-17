@@ -5,14 +5,15 @@ import { BrowserRouter } from 'react-router-dom';
 import { getSharedServicesFactory } from '@domain/shared';
 import { createHttpClient, getCommonServicesFactory } from '@infrastructure/common';
 
+import { getSecurityContextProviderFactory } from '@domain/security';
 import { App, getErrorContextProviderFactory, getNavigationContextProviderFactory } from './app';
 
 const { CommonServices, ErrorContext } = getCommonServicesFactory();
 const ErrorContextProvider = getErrorContextProviderFactory(ErrorContext);
 
-const { SharedServices, NavigationContext /* SecurityContext */ } = getSharedServicesFactory();
+const { SharedServices, NavigationContext, SecurityContext } = getSharedServicesFactory();
 const NavigationContextProvider = getNavigationContextProviderFactory(NavigationContext);
-// const SecurityContextProvider = getSecurityContextProviderFactory(SecurityContext);
+const SecurityContextProvider = getSecurityContextProviderFactory(SecurityContext);
 
 createHttpClient({
   applicationId: `goto-react:${crypto.randomUUID()}`
@@ -25,10 +26,7 @@ root.render(
       <CommonServices errorContextProvider={ErrorContextProvider}>
         <SharedServices
           navigationContextProvider={NavigationContextProvider}
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          securityContextProvider={({ children }) => {
-            return <div className="todo">{children}</div>;
-          }} // SecurityContextProvider}
+          securityContextProvider={SecurityContextProvider}
         >
           <App />
         </SharedServices>

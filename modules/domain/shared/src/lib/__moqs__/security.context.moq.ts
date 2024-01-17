@@ -4,12 +4,18 @@ import { SecurityContext } from '../models';
 export type SecurityContextMock = Partial<SecurityContext>;
 
 export const getSecurityContextMock = (mockedContext?: SecurityContextMock) => {
+  let token = '';
   let hasAnyPermission = (permissions: string[]) => false;
   let hasAnyRole = (roles: string[]) => false;
   let hasEveryPermission = (permissions: string[]) => false;
   let hasEveryRole = (roles: string[]) => false;
   let logout = () => {};
   let getUser = () => ({});
+  const isAuthenticated = false;
+  const getToken = () => token;
+  const updateToken = (newToken: string) => {
+    token = newToken;
+  };
 
   if (mockedContext?.hasAnyPermission) {
     hasAnyPermission = mockedContext.hasAnyPermission;
@@ -40,7 +46,10 @@ export const getSecurityContextMock = (mockedContext?: SecurityContextMock) => {
     hasAnyRole,
     hasEveryPermission,
     hasEveryRole,
+    getUser,
     logout,
-    getUser
+    isAuthenticated,
+    updateToken,
+    getToken
   };
 };

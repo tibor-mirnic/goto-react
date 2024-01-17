@@ -1,0 +1,5 @@
+@use './un-authenticated/sc-un-authenticated-page' as *;
+
+@mixin load($theme, $cui-variables, $color-palette) {
+  @include sc-un-authenticated-page($theme, $cui-variables, $color-palette);
+}

@@ -11,6 +11,9 @@ export type SecurityContext = {
   hasEveryRole: (roles: string[]) => boolean;
   // authorization
   logout: () => void;
+  isAuthenticated: boolean;
+  getToken: () => string;
+  updateToken: (newToken: string) => void;
 };
 
 export type SecurityContextProvider = FC<PropsWithChildren>;
