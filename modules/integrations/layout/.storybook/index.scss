@@ -1,0 +1,11 @@
+@use '../src/lib/index' as ltModule;
+
+$theme: 1;
+$cui-variables: 2;
+$color-palette: 3;
+
+#storybook-root {
+  display: flex;
+}
+
+@include ltModule.load($theme, $cui-variables, $color-palette);
