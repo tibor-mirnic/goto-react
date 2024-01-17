@@ -1,0 +1,5 @@
+@use './layout/lt-layout' as *;
+
+@mixin load($theme, $cui-variables, $color-palette) {
+  @include lt-layout($theme, $cui-variables, $color-palette);
+}

@@ -23,6 +23,10 @@
               {
                 "sourceTag": "infrastructure:common",
                 "onlyDependOnLibsWithTags": ["infrastructure:common"]
+              },
+              {
+                "sourceTag": "integrations:*",
+                "onlyDependOnLibsWithTags": ["infrastructure:*", "domain:*"]
               }
             ]
           }

@@ -27,7 +27,7 @@ root.render(
           navigationContextProvider={NavigationContextProvider}
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           securityContextProvider={({ children }) => {
-            return <div>{children}</div>;
+            return <div className="todo">{children}</div>;
           }} // SecurityContextProvider}
         >
           <App />

@@ -1,7 +1,8 @@
 import { ModuleOneModule } from '@domain/module-one';
 import { ApplicationModules, useNavigationContextSelector } from '@domain/shared';
+import { LtLayout } from '@integrations/layout';
 import { FC, Suspense } from 'react';
-import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 const getModuleRoute = (routePath: string) => `${routePath}/*`;
 
@@ -12,15 +13,7 @@ export const App: FC = () => {
   const featureTwoModule = getModule(ApplicationModules.MODULE_TWO);
   return (
     <Routes>
-      <Route
-        path="/"
-        element={
-          <div>
-            <div>LAYOUT</div>
-            <Outlet />
-          </div> /* <LtLayout /> */
-        }
-      >
+      <Route path="/" element={<LtLayout />}>
         <Route path="/" element={<Navigate to={featureOneModule.routePath} />} />
         <Route
           path={getModuleRoute(featureOneModule.routePath)}

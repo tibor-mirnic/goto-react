@@ -1,0 +1,5 @@
+@use './features/' as ftModule;
+
+@mixin load($theme, $cui-variables, $color-palette) {
+  @include ftModule.load($theme, $cui-variables, $color-palette);
+}

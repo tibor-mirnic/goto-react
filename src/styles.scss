@@ -1,10 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
 
+@use '../modules/integrations/layout/src/lib/' as ltModule;
 @use '../modules/domain/module-one/src/lib' as moModule;
 
+/* TODO: Define proper variables */
 $theme: 1;
 $cui-variables: 2;
 $color-palette: 3;
+
+/* Default overrides */
+@mixin base-overrides($cui-variables) {
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+  html {
+    font-size: 62.5%;
+  }
+
+  body {
+    width: 100%;
+    font-size: 1.4rem;
+    overflow-y: hidden;
+  }
+}
 
 #root {
   height: 100%;
@@ -13,4 +39,6 @@ $color-palette: 3;
   overflow: hidden;
 }
 
+@include base-overrides($cui-variables);
+@include ltModule.load($theme, $cui-variables, $color-palette);
 @include moModule.load($theme, $cui-variables, $color-palette);

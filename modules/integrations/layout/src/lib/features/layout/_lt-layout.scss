@@ -1,0 +1,33 @@
+@use 'sass:color';
+
+@mixin lt-layout($theme, $cui-variables, $color-palette) {
+  $-background: lightgray;
+  $-padding: 3rem;
+
+  .lt-layout {
+    display: flex;
+    flex-direction: column;
+
+    &-header {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      height: 6rem;
+
+      &-spacer {
+        flex: 1;
+      }
+    }
+
+    &-content {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    &-footer {
+      display: flex;
+      align-items: center;
+      height: 4rem;
+    }
+  }
+}
