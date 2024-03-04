@@ -1,7 +1,7 @@
-import { ModuleOneModule } from 'domain-module-one';
-import { useAuthorize /* ScUnAuthenticatedPage */ } from 'domain-security';
-import { ApplicationModules, useNavigationContextSelector, useSecurityContextSelector } from 'domain-shared';
-import { LtLayout } from 'integrations-layout';
+import { ModuleOneModule } from 'domain/module-one';
+import { useAuthorize /* ScUnAuthenticatedPage */ } from 'domain/security';
+import { ApplicationModules, useNavigationContextSelector, useSecurityContextSelector } from 'domain/shared';
+import { LtLayout } from 'integrations/layout';
 import { FC, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 

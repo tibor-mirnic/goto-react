@@ -2,10 +2,10 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
-import { getSharedServicesFactory } from 'domain-shared';
-import { createHttpClient, getCommonServicesFactory } from 'infrastructure-common';
+import { getSharedServicesFactory } from 'domain/shared';
+import { createHttpClient, getCommonServicesFactory } from 'infrastructure/common';
 
-import { getSecurityContextProviderFactory } from 'domain-security';
+import { getSecurityContextProviderFactory } from 'domain/security';
 import { App, getErrorContextProviderFactory, getNavigationContextProviderFactory } from './app';
 
 const { CommonServices, ErrorContext } = getCommonServicesFactory();

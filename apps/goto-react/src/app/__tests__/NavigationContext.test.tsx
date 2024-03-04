@@ -1,4 +1,4 @@
-import { ApplicationModules, NavigationContext } from 'domain-shared';
+import { ApplicationModules, NavigationContext } from 'domain/shared';
 import { renderHook, waitFor } from '@testing-library/react';
 import { FC } from 'react';
 import { MemoryRouter, MemoryRouterProps } from 'react-router-dom';

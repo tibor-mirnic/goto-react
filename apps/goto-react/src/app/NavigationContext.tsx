@@ -4,7 +4,7 @@ import {
   ApplicationModulesDictionary,
   NavigationContext,
   NavigationContextProviderFactory
-} from 'domain-shared';
+} from 'domain/shared';
 import { FC, PropsWithChildren, useCallback, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
