@@ -15,11 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "domain/shared": ["libs/domain/shared/src/index.ts"],
-      "domain/shared/moq": ["libs/domain/shared/src/index.moq.ts"],
       "domain/module-one": ["libs/domain/module-one/src/index.ts"],
       "domain/module-two": ["libs/domain/module-two/src/index.ts"],
       "domain/security": ["libs/domain/security/src/index.ts"],
+      "domain/shared": ["libs/domain/shared/src/index.ts"],
+      "domain/shared/moq": ["libs/domain/shared/src/index.moq.ts"],
       "infrastructure/common": ["libs/infrastructure/common/src/index.ts"],
       "infrastructure/common/moq": ["libs/infrastructure/common/src/index.moq.ts"],
       "integrations/layout": ["libs/integrations/layout/src/index.ts"]

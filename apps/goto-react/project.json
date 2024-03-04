@@ -56,15 +56,13 @@
       "executor": "@nx/vite:test",
       "outputs": ["{options.reportsDirectory}"],
       "options": {
-        "passWithNoTests": true,
         "reportsDirectory": "coverage/goto-react"
       }
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/goto-react/src"]
+        "lintFilePatterns": ["{projectRoot}/src"]
       }
     }
   },

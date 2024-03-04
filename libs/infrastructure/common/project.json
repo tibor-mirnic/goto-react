@@ -29,7 +29,6 @@
       "executor": "@nx/vite:test",
       "outputs": ["{options.reportsDirectory}"],
       "options": {
-        "passWithNoTests": true,
         "reportsDirectory": "../../../coverage/libs/infrastructure/common"
       }
     }

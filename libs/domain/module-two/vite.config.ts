@@ -56,6 +56,7 @@ export default defineConfig({
     coverage: {
       reportsDirectory: '../../../coverage/modules/domain/module-two',
       provider: 'v8'
-    }
+    },
+    passWithNoTests: true
   }
 });
