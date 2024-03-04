@@ -15,14 +15,14 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@domain/module-one": ["modules/domain/module-one/src/index.ts"],
-      "@domain/module-two": ["modules/domain/module-two/src/index.ts"],
-      "@domain/security": ["modules/domain/security/src/index.ts"],
-      "@domain/shared": ["modules/domain/shared/src/index.ts"],
-      "@domain/shared-moq": ["modules/domain/shared/src/index.moq.ts"],
-      "@infrastructure/common": ["modules/infrastructure/common/src/index.ts"],
-      "@infrastructure/common-moq": ["modules/infrastructure/common/src/index.moq.ts"],
-      "@integrations/layout": ["modules/integrations/layout/src/index.ts"]
+      "@domain/shared-moq": ["libs/modules/domain/shared/src/index.moq.ts"],
+      "@infrastructure/common-moq": ["libs/modules/infrastructure/common/src/index.moq.ts"],
+      "domain-module-one": ["libs/modules/domain/module-one/src/index.ts"],
+      "domain-module-two": ["libs/modules/domain/module-two/src/index.ts"],
+      "domain-security": ["libs/modules/domain/security/src/index.ts"],
+      "domain-shared": ["libs/modules/domain/shared/src/index.ts"],
+      "infrastructure-common": ["libs/modules/infrastructure/common/src/index.ts"],
+      "integrations-layout": ["libs/modules/integrations/layout/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
