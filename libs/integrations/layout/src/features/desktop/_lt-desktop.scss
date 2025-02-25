@@ -1,0 +1,37 @@
+@use 'sass:color';
+
+@mixin lt-desktop($theme, $cui-variables, $color-palette) {
+  $-background: lightgray;
+  $-padding: 1rem;
+
+  .lt-desktop {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: $-padding;
+
+    &-header {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      height: 4rem;
+      align-items: center;
+
+      &-spacer {
+        flex: 1;
+      }
+    }
+
+    &-content {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    &-footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 4rem;
+    }
+  }
+}

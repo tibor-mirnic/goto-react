@@ -1,0 +1,9 @@
+@mixin mo-default-page($theme, $cui-variables, $color-palette) {
+  $-background: darkgray;
+  $-padding: 1rem;
+
+  .mo-default-page {
+    background-color: $-background;
+    padding: $-padding;
+  }
+}

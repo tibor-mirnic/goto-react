@@ -1,29 +1,30 @@
 /// <reference types='vitest' />
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import dts from 'vite-plugin-dts';
-import * as path from 'path';
+import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+import react from '@vitejs/plugin-react';
+import * as path from 'path';
+import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
 
+// eslint-disable-next-line import/no-default-export
 export default defineConfig({
   root: __dirname,
-  cacheDir: '../../../node_modules/.vite/modules/domain/module-one',
-
+  cacheDir: '../../../node_modules/.vite/libs/domain/module-one',
   plugins: [
     react(),
     nxViteTsPaths(),
-    dts({ entryRoot: 'src', tsConfigFilePath: path.join(__dirname, 'tsconfig.lib.json'), skipDiagnostics: true })
+    nxCopyAssetsPlugin(['*.md']),
+    dts({ entryRoot: 'src', tsconfigPath: path.join(__dirname, 'tsconfig.lib.json') })
   ],
-
   // Uncomment this if you are using workers.
   // worker: {
   //  plugins: [ nxViteTsPaths() ],
   // },
-
   // Configuration for building your library.
   // See: https://vitejs.dev/guide/build.html#library-mode
   build: {
-    outDir: '../../../dist/modules/domain/module-one',
+    outDir: '../../../dist/libs/domain/module-one',
+    emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {
       transformMixedEsModules: true
@@ -35,28 +36,22 @@ export default defineConfig({
       fileName: 'index',
       // Change this to the formats you want to support.
       // Don't forget to update your package.json as well.
-      formats: ['es', 'cjs']
+      formats: ['es']
     },
     rollupOptions: {
       // External packages that should not be bundled into your library.
       external: ['react', 'react-dom', 'react/jsx-runtime']
     }
   },
-
   test: {
+    watch: false,
     globals: true,
-    cache: {
-      dir: '../../../node_modules/.vitest'
-    },
     environment: 'jsdom',
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    setupFiles: 'src/test-setup.ts',
-
     reporters: ['default'],
     coverage: {
-      reportsDirectory: '../../../coverage/modules/domain/module-one',
+      reportsDirectory: '../../../coverage/libs/domain/module-one',
       provider: 'v8'
-    },
-    passWithNoTests: true
+    }
   }
 });

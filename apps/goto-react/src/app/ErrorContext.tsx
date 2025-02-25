@@ -1,4 +1,5 @@
-import { ErrorBase, ErrorContext, ErrorContextProviderFactory } from 'infrastructure-common';
+/* eslint-disable @typescript-eslint/no-empty-function */
+import { ErrorBase, ErrorContext, ErrorContextProviderFactory } from '@infrastructure/common';
 
 import { FC, PropsWithChildren, useCallback, useMemo } from 'react';
 
@@ -6,7 +7,6 @@ export const getErrorContextProviderFactory: ErrorContextProviderFactory = (erro
   const ErrorContextProvider: FC<PropsWithChildren> = ({ children }) => {
     const onUnexpectedError = useCallback(() => {}, []);
     const onUserFriendlyError = useCallback((errorBase: ErrorBase) => {
-      // eslint-disable-next-line no-alert
       alert(`${errorBase.name}: ${errorBase.message}`);
     }, []);
 

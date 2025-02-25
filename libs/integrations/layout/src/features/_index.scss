@@ -1,0 +1,5 @@
+@use './desktop/lt-desktop' as *;
+
+@mixin load-features($theme, $cui-variables, $color-palette) {
+  @include lt-desktop($theme, $cui-variables, $color-palette);
+}

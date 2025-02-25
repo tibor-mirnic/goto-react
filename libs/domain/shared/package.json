@@ -1,5 +1,5 @@
 {
-  "name": "domain/shared",
+  "name": "@domain/shared",
   "version": "0.0.1",
   "main": "./index.js",
   "types": "./index.d.ts",

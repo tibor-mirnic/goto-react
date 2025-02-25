@@ -1,0 +1,5 @@
+@use './pages/' as *;
+
+@mixin load-sc-module($theme, $cui-variables, $color-palette) {
+  @include load-pages($theme, $cui-variables, $color-palette);
+}

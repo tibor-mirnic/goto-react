@@ -1,0 +1,7 @@
+@use './feature-one/mo-feature-one' as *;
+@use './default/mo-default' as *;
+
+@mixin load-features($theme, $cui-variables, $color-palette) {
+  @include mo-feature-one($theme, $cui-variables, $color-palette);
+  @include mo-default($theme, $cui-variables, $color-palette);
+}

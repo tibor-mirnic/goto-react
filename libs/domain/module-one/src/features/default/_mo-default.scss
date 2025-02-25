@@ -1,0 +1,9 @@
+@mixin mo-default($theme, $cui-variables, $color-palette) {
+  $-background: gray;
+  $-padding: 2rem;
+
+  .mo-default {
+    background-color: $-background;
+    padding: $-padding;
+  }
+}

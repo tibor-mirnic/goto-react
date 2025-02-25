@@ -1,0 +1,9 @@
+@use './components' as *;
+@use './features' as *;
+@use './pages/' as *;
+
+@mixin load-mo-module($theme, $cui-variables, $color-palette) {
+  @include load-components($theme, $cui-variables, $color-palette);
+  @include load-features($theme, $cui-variables, $color-palette);
+  @include load-pages($theme, $cui-variables, $color-palette);
+}

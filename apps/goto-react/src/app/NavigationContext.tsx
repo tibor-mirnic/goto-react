@@ -4,7 +4,7 @@ import {
   ApplicationModulesDictionary,
   NavigationContext,
   NavigationContextProviderFactory
-} from 'domain/shared';
+} from '@domain/shared';
 import { FC, PropsWithChildren, useCallback, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -40,7 +40,6 @@ export const getNavigationContextProviderFactory: NavigationContextProviderFacto
 
     let matchedModule: ApplicationModule = modules[0];
 
-    // eslint-disable-next-line no-plusplus
     for (let i = 0; i < modules.length; i++) {
       const m = modules[i];
 

@@ -1,0 +1,5 @@
+@use './features/' as *;
+
+@mixin load-lt-module($theme, $cui-variables, $color-palette) {
+  @include load-features($theme, $cui-variables, $color-palette);
+}

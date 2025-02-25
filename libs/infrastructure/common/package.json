@@ -1,5 +1,5 @@
 {
-  "name": "infrastructure/common",
+  "name": "@infrastructure/common",
   "version": "0.0.1",
   "main": "./index.js",
   "types": "./index.d.ts",
