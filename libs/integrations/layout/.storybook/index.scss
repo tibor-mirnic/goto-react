@@ -1,0 +1,11 @@
+@use '../src/' as *;
+
+$theme: 1;
+$cui-variables: 2;
+$color-palette: 3;
+
+#storybook-root {
+  display: flex;
+}
+
+@include load-lt-module($theme, $cui-variables, $color-palette);

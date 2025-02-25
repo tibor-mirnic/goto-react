@@ -27,7 +27,7 @@ DocsCmp.displayName = 'LtDesktop';
 const meta: Meta<typeof LtDesktop> = {
   component: DocsCmp,
   excludeStories: ['DocsCmp'],
-  title: 'Modules/Integrations/Layout/Features/Layout/LtDesktop'
+  title: 'Modules/Integrations/Layout/Features/Desktop/LtDesktop'
 };
 // eslint-disable-next-line import/no-default-export
 export default meta;
